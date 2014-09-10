@@ -7,14 +7,12 @@ pinyin.js
 $ [sudo] npm install pinyin.js
 ````
 
-
 ### Example
 ````javascript
-var pinyin.js = require('pinyin.js');
+var pinyin = require('pinyin.js');
+
+console.log( new Pinyin("拼音").letter() );
 ````
-
-### API
-
 
 ### Contributing
 - Fork this repo
