@@ -1,0 +1,47 @@
+#!/usr/bin/env node
+
+const fs    = require('fs');
+const path  = require('path');
+const https = require('https');
+const pkg   = require('../package');
+
+
+const EOL = '\n';
+const TAB = '\t';
+
+var source = pkg[ 'data-source' ];
+
+var filename = path.join(
+  __dirname,
+  '../data/' + String(path.basename(source)).toLowerCase()
+);
+
+https.get(source, function(res){
+  
+  res.on('error', function(err){
+    console.error(err);
+  }).on('end', function(){
+    
+    console.log('[√] update done');
+    
+    fs.readFile(filename, 'utf8', function(err, content){
+      var obj = {};
+      content.split(EOL).filter(function(line){
+        return !!line;
+      }).map(function(line){
+        return line.split(TAB);
+      }).forEach(function(item){
+        obj[ item[0] ] = item[1];
+      });
+      fs.writeFile(filename.replace(/.dat$/, '.json'), JSON.stringify(obj), function(err){
+        console.log('[√] json file created');
+      });
+    });
+    
+  }).pipe(fs.createWriteStream(filename))
+  
+  
+  
+  
+  
+});

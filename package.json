@@ -1,13 +1,15 @@
 {
   "name": "pinyin.js",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "pinyin.js",
   "main": "index.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "node test/test.js"
+    "example": "node example",
+    "test": "mocha test/test.js",
+    "update": "./bin/make"
   },
   "repository": {
     "type": "git",
@@ -21,5 +23,6 @@
   "bugs": {
     "url": "https://github.com/song940/pinyin.js/issues"
   },
+  "data-source": "https://raw.githubusercontent.com/fayland/perl-lingua-han/master/Lingua-Han-PinYin/lib/Lingua/Han/PinYin/Mandarin.dat",
   "homepage": "https://github.com/song940/pinyin.js"
 }
