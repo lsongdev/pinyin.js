@@ -5,7 +5,6 @@ const path  = require('path');
 const https = require('https');
 const pkg   = require('../package');
 
-
 const EOL = '\n';
 const TAB = '\t';
 
@@ -17,13 +16,10 @@ var filename = path.join(
 );
 
 https.get(source, function(res){
-  
   res.on('error', function(err){
     console.error(err);
   }).on('end', function(){
-    
     console.log('[√] update done');
-    
     fs.readFile(filename, 'utf8', function(err, content){
       var obj = {};
       content.split(EOL).filter(function(line){
@@ -38,10 +34,5 @@ https.get(source, function(res){
       });
     });
     
-  }).pipe(fs.createWriteStream(filename))
-  
-  
-  
-  
-  
+  }).pipe(fs.createWriteStream(filename));
 });

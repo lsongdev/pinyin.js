@@ -3,16 +3,17 @@
 pinyin.js
 
 ### Installation
-````
-$ npm install pinyin.js
-````
+
+```bash
+$ npm i pinyin.js
+```
 
 ### Example
 
 
-````bash
+```bash
 ~$ npm run example
-````
+```
 
 ```
 春
